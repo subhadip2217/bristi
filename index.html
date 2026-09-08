@@ -1,1 +1,236 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Bristi</title>
+<meta name="description" content="A quiet cinematic page for Bristi — whose name means rain." />
+<meta name="theme-color" content="#0a0b0d" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Bengali:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.card-img.sky-bg { background: linear-gradient(180deg, #1c222b 0%, #0a0b0d 100%); min-height: 280px; }
+.card-img.sky-bg img { display: none; }
+.radio-art.street-bg { background: linear-gradient(160deg, #1a1d23 0%, #0a0b0d 50%, #161a20 100%); min-height: 260px; }
+.radio-art.street-bg img { display: none; }
+.boat-art.water-bg { background: linear-gradient(180deg, #1a1f28 0%, #0c1016 60%, #080a0c 100%); min-height: 260px; }
+.boat-art.water-bg > img { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.credits-inner.drops-bg { background: radial-gradient(ellipse at 30% 40%, #2a3038 0%, #0a0b0d 70%); min-height: 380px; }
+.credits-inner.drops-bg > img { display: none; }
+</style>
+</head>
+<body>
+<div class="film-grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<canvas id="rain-canvas" aria-hidden="true"></canvas>
+
+<header class="chrome">
+  <a class="brand" href="#open">For Bristi</a>
+  <button type="button" class="audio" id="audio-btn" aria-pressed="false" aria-label="Play rain">
+    <span id="audio-label">Listen</span>
+  </button>
+</header>
+
+<nav class="chapters" aria-label="Chapters">
+  <a href="#open" title="Open"><span class="sr-only">Open</span></a>
+  <a href="#name" title="Name"><span class="sr-only">Name</span></a>
+  <a href="#glass" title="Glass"><span class="sr-only">Glass</span></a>
+  <a href="#letter" title="Letter"><span class="sr-only">Letter</span></a>
+  <a href="#radio" title="Radio"><span class="sr-only">Radio</span></a>
+  <a href="#sky" title="Sky"><span class="sr-only">Sky</span></a>
+  <a href="#boat" title="Boat"><span class="sr-only">Boat</span></a>
+  <a href="#forecast" title="Forecast"><span class="sr-only">Forecast</span></a>
+</nav>
+
+<section id="open">
+  <div class="hero-grid">
+    <div class="hero-copy stagger">
+      <p class="eyebrow">A page, not a performance</p>
+      <p class="bn">বৃষ্টি</p>
+      <h1>Bristi</h1>
+      <p class="sub">whose name means rain</p>
+      <p class="lede">Made by a friend. Best viewed with the rain on, a little slowly, like a film you don’t skip.</p>
+      <a class="enter" href="#name">Enter <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure class="portrait">
+      <div class="frame" aria-hidden="true"></div>
+      <div class="shot">
+        <img id="hero-photo" src="" data-portrait="1" alt="Portrait of Bristi" width="480" height="480" />
+      </div>
+      <figcaption><span>Still 01</span><span>Untitled · rain</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="name">
+  <div class="two">
+    <div class="card-img sky-bg">
+      <img alt="" />
+      <div class="shade"></div>
+      <p class="caption">A guest, not a forecast.</p>
+    </div>
+    <div>
+      <p class="eyebrow">The name</p>
+      <div class="rule"></div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">In Bangla, rain is not weather.</h2>
+      <p class="body"><span class="bn" style="color:var(--paper)">বৃষ্টি</span> arrives without asking. It changes the colour of the afternoon, then leaves the world smelling like it remembers you.</p>
+      <p class="body">Some names are labels. Hers is a climate. Soft on the glass, loud on the tin roof, and somehow both at once — which is a rare talent in a person.</p>
+      <p class="body">This page is just that idea, stretched out: a small monsoon made of type, a photograph, and a few things you can actually play with.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section two flip" id="glass">
+  <div>
+    <p class="eyebrow">Scene 02 · the window</p>
+    <div class="rule"></div>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">Wipe the glass.</h2>
+    <p class="body">Hold and drag across the pane. Condensation always comes back — rain is stubborn that way. The portrait stays. That’s the whole metaphor, if you want one.</p>
+  </div>
+  <div class="glass-wrap" id="glass-wrap">
+    <img id="glass-photo" src="" data-portrait="1" alt="Bristi behind rain-streaked glass" />
+    <canvas id="glass-canvas" aria-label="Wipe condensation from the glass"></canvas>
+    <p class="glass-hint" id="glass-hint">Hold & drag</p>
+  </div>
+</section>
+
+<section class="section" id="letter">
+  <div id="letter-root">
+    <p class="eyebrow">From a friend</p>
+    <div class="rule"></div>
+    <pre id="letter-text"></pre>
+  </div>
+</section>
+
+<section class="section" id="radio">
+  <div class="two">
+    <div class="radio-art street-bg">
+      <img alt="" />
+      <div class="overlay">
+        <p class="now">Now playing</p>
+        <p class="name" id="station-name">Soft Drizzle</p>
+        <p class="hz" id="station-hz">88.1 FM</p>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Rain radio</p>
+      <div class="rule"></div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">Tune the weather.</h2>
+      <p class="body">Each station is a different rain. The last one isn’t on any map — spin the dial until it feels like her.</p>
+      <div class="station-list" id="stations"></div>
+      <p class="station-copy" id="station-copy">A conversation that never has to raise its voice.</p>
+      <button type="button" class="btn-pill" id="rain-on-btn" style="margin-top:1.5rem">Turn the rain on</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sky">
+  <div class="sky-head">
+    <div>
+      <p class="eyebrow">Catch the sky</p>
+      <div class="rule"></div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">The sky keeps dropping words.</h2>
+      <p class="body" style="max-width:28rem">Tap a falling word before it vanishes. Twelve of them. When the jar is full, the weather is yours.</p>
+    </div>
+    <p class="sky-count"><span id="caught-count">0</span> / 12</p>
+  </div>
+  <div class="sky-stage" id="sky-stage">
+    <div class="jar">
+      <svg viewBox="0 0 80 110" aria-hidden="true">
+        <path d="M22 18h36l6 14v54a18 18 0 0 1-18 18H34A18 18 0 0 1 16 86V32z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M18 38h44" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <rect id="jar-fill" x="22" y="86" width="36" height="0" rx="4" fill="currentColor" opacity="0.35"/>
+      </svg>
+      <p class="note" id="sky-note" hidden></p>
+      <p class="label" id="sky-label">Jar of weather</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="boat">
+  <div class="two">
+    <div>
+      <p class="eyebrow">A monsoon toy</p>
+      <div class="rule"></div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">Fold a thought. Send it across the puddle.</h2>
+      <p class="body">Paper boats are how a lot of childhoods survived the rain. Write something small. The water is a very good listener.</p>
+      <form class="boat-form" id="boat-form">
+        <label class="sr-only" for="boat-note">A note for the paper boat</label>
+        <input id="boat-note" maxlength="80" placeholder="A small thought…" autocomplete="off" />
+        <div class="boat-actions">
+          <button type="submit" class="btn-pill" id="boat-send">Send the boat</button>
+          <button type="button" class="btn-ghost" id="boat-reset" hidden>Fold another</button>
+        </div>
+      </form>
+      <p class="boat-reply" id="boat-reply" hidden></p>
+    </div>
+    <div class="boat-art water-bg">
+      <img alt="" />
+      <div class="shade"></div>
+      <div class="boat-svg" id="boat-svg" aria-hidden="true">
+        <svg viewBox="0 0 120 70">
+          <path d="M8 42 L40 18 L60 42 Z" fill="#efece6"/>
+          <path d="M60 42 L80 16 L112 42 Z" fill="#d8d3c8"/>
+          <path d="M8 42 L60 54 L112 42 L60 42 Z" fill="#c4bfb5"/>
+          <path d="M40 18 L60 42 L80 16 L60 8 Z" fill="#efece6"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wish-box">
+  <div class="inner">
+    <p class="eyebrow">Wish rain</p>
+    <h2 class="display" style="font-size:clamp(1.75rem,3vw,2.25rem);margin-top:1rem">Write something. Let the rain carry it.</h2>
+    <p class="body" style="max-width:32rem">Your words fall through the page as rain. Look up. They’re already leaving.</p>
+    <form class="wish-form" id="wish-form">
+      <label class="sr-only" for="wish">A wish for the rain</label>
+      <input id="wish" maxlength="48" placeholder="Type a wish…" autocomplete="off" />
+      <button type="submit" class="btn-pill">Make it rain</button>
+    </form>
+  </div>
+</div>
+
+<section class="section" id="forecast">
+  <div class="two">
+    <div>
+      <p class="eyebrow">Friendship weather service</p>
+      <div class="rule"></div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3rem)">Today’s forecast is her.</h2>
+      <p class="body">Issued daily, never expires, stubbornly local. No umbrella required — though one is always offered.</p>
+    </div>
+    <dl class="forecast">
+      <div class="row"><dt>Issued for</dt><dd>Bristi</dd></div>
+      <div class="row"><dt>Sky</dt><dd>Undecided on purpose</dd></div>
+      <div class="row"><dt>Precipitation</dt><dd>100%</dd></div>
+      <div class="row"><dt>Wind</dt><dd>From the direction of a good joke</dd></div>
+      <div class="row"><dt>Visibility</dt><dd>Clear, if you look twice</dd></div>
+      <div class="row"><dt>Outlook</dt><dd>She remains the weather</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer class="credits">
+  <div class="credits-inner drops-bg">
+    <img alt="" />
+    <div class="veil">
+      <p class="end">End titles</p>
+      <h2>Bristi</h2>
+      <p class="bn">বৃষ্টি</p>
+      <ul>
+        <li>directed by rain</li>
+        <li>starring the girl who is the weather</li>
+        <li>produced by a friend</li>
+      </ul>
+      <p class="tag">If the rain stops, refresh.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="portrait.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
